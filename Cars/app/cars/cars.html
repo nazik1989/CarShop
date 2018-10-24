@@ -1,0 +1,170 @@
+
+<div class="container" style='background-color:#ffffff'>
+  <div class="row" >
+
+            <div class="col-sm-4" style= "background-color:white;padding-right: 20px;padding-left:20px;"> <!--  Left block col-sm-4 -->
+                <div class="selectBoxesForm">
+                <select class="selectCarParametrs" >
+                    <div >
+                        <option value="" disabled selected>Condition</option>
+                        <option  ng-repeat="x in todos"  value="{{x.condition}}">{{x.condition}}</option>
+                    </div>
+                </select>
+                    </div>
+
+                <div class="selectBoxesForm">
+                    <select class="selectCarParametrs" >
+                        <div >
+                            <option value="" disabled selected>Body</option>
+                            <option  ng-repeat="x in todos"  value="{{x.body}}">{{x.body}}</option>
+                        </div>
+                    </select>
+                </div>
+
+                <div class="selectBoxesForm">
+                    <select class="selectCarParametrs" ng-model="selectedCar">
+                        <div >
+                            <option value="" disabled selected>Make</option>
+                            <option  ng-repeat="x in todos"  value="{{x.make}}">{{x.make}}</option>
+                        </div>
+                    </select>
+                </div>
+
+                <div class="selectBoxesForm">
+                    <select  class="selectCarParametrs" >
+                        <div >
+                            <option value="" disabled selected>Model</option>
+                            <option  ng-repeat="x in todos"  value="{{x.model}}">{{x.model}}</option>
+                        </div>
+                    </select>
+                </div>
+
+                <div class="selectBoxesForm">
+                    <select  class="selectCarParametrs">
+                        <div >
+                            <option value="" disabled selected>Year</option>
+                            <option  ng-repeat="x in todos"  value="{{x.year}}">{{x.year}}</option>
+                        </div>
+                    </select>
+                </div>
+
+                <div class="selectBoxesForm">
+                    <select  class="selectCarParametrs">
+                        <div >
+                            <option value="" disabled selected>Tranmission</option>
+                            <option  ng-repeat="x in todos"  value="{{x.transmission}}">{{x.transmission}}</option>
+                        </div>
+                    </select>
+                </div>
+
+                <div class="selectBoxesForm" style= "color:#b30000">
+                    <div><p style="text-align: center"><b>$ <output name="amount" id="amount" for="rangeInput">60000</output> - $<output name="amount1" id="amount1" for="rangeInput1">130000</output></b></p></div>
+
+                    <input type="range" id="rangeInput"
+                           name="rangeInput" min="5000" max="100000" value="50000"
+                           oninput="amount.value=rangeInput.value"><input type="range" id="rangeInput1"
+                           name="rangeInput1" min="100000" max="200000" value="150000"
+                           oninput="amount1.value=rangeInput1.value" >
+
+
+
+                </div>
+
+                <div class="selectBoxesForm" style= "color:#b30000">
+                <form  >
+                    <input type="text" placeholder="SEARCH NOW" name="search" style="background-color:#b30000;color:white;padding:5px;">
+                    <button type="submit" style="background-color:#b30000;color:white;padding:5px;"><i class="fa fa-search"></i></button>
+                </form>
+                </div>
+
+                <div>nkar</div>
+
+
+            </div ><!--  Left block col-sm-4 -->
+
+
+
+      <div  class="col-sm-8"  ><!-- cars Block div start -->
+
+              <div class="col-sm-12" id="sexanLeft90" >
+                  <h5 class="">USED CARS </h5>
+              </div>
+              <div class="col-sm-12" style="background-color: #F5F5F5;padding: 15px;">
+<div class="row">
+                  <div class="col-sm-1"><i class="fa fa-th text-dark " style="font-size:24px"></i></div>
+                  <div class="col-sm-1"><i class="fa fa-server text-dark " style="font-size:24px"></i></div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-6">
+                      <i class="fa fa-sort-alpha-asc  text-dark"></i>
+                      Filter :
+                              <select>
+                                  <option>Latest</option>
+                                  <option>Best Seller</option>
+                                  <option>Featured</option>
+                                  <option>Offer</option>
+                              </select>
+
+                      <i class="fa fa-sort-alpha-asc mr-5 text-dark"></i>
+                      Show :
+                      <select>
+                                      <option>6</option>
+                                      <option>12</option>
+                                      <option>24</option>
+                                      <option>All</option>
+                      </select>
+    </div>
+</div>
+</div>
+
+<div  style="padding:10px;" ng-repeat="x in todos | limitTo : carOnPage:startFrom  " > <!-- | madeBy:selectedCar -->
+
+<div  class="row" style= "background-color:#f2f2f2" >
+    <div class="col-sm-6" style= "padding:15px;" >
+      <img src="../../node/images/{{x.img[0].filename}}"  style="width:350px;height:200px;">
+    </div>
+
+    <div class="col-sm-6" style= "padding:20px;">
+        <div>
+
+            <!-- <a  href="#!/myCars/{{x.id}} " >{{x.make}}</a> -->
+            <p><b><a id="CarNameLink" ng-href="#!carOnclick/?{{x._id}}">{{x.make}}-{{x.model}}</a></b></p>
+           <!--  <a  href="#!/carOnclick/{{x.id}} " >{{x.model}}</a> -->
+        </div>
+      <div ><img src="{{x.stars}}" style="width:70px;height:13px;">{{x.number}}</div>
+      <h3 style="color:#cc3333">{{x.price |  currency: "$" : 0}}</h3>
+      <p style="color:gray;">{{x.description}}</p>
+
+            <div class="row">
+
+      <div  style= "background-color:#d9d9d9; padding: 5px 10px ;margin-right:1px; "><h6 style= "color:#404040; "><i class="fa fa-clock-o" style="font-size:15px;color:gray"></i> {{x.year}}</h6></div>
+
+
+      <div  style= "background-color:#d9d9d9; padding: 5px 10px ;margin-right:1px;"><h6 style= "color:#404040;"><i class="fa fa-tachometer" style="font-size:15px;color:gray"></i> {{x.tranmission}}</h6></div>
+
+      <div style= "background-color:#d9d9d9; padding: 5px 10px ;margin-right:1px;"><h6 style= "color:#404040;"><i class="fa fa-road" style="font-size:15px;color:gray"></i> {{x.useWay}}</h6></div>
+      </div>
+
+
+    </div>
+
+</div>
+</div>
+          <div class="row paginationRow">
+          <div  class="pagination"  ng-repeat="i in CountPageDivs"  id={{i}} data-ng-click="PaginationFunction($event)"> {{i}} </div>
+          </div>
+
+          <!--<div class="row paginationRow">-->
+              <!--<div class="pagination" id="1" data-ng-click="PaginationFunction($event)">1</div>-->
+              <!--<div class="pagination" id="2" data-ng-click="PaginationFunction($event)">2</div>-->
+              <!--<div class="pagination" id="3" data-ng-click="PaginationFunction($event)">3</div>-->
+              <!--<div class="pagination" id="4" data-ng-click="PaginationFunction($event)">4</div>-->
+              <!--<div class="pagination" id="5" data-ng-click="PaginationFunction($event)">5</div>-->
+              <!--<div class="pagination" id="6" data-ng-click="PaginationFunction($event)">6</div>-->
+              <!--<div class="pagination" id="7" data-ng-click="PaginationFunction($event)">7</div>-->
+              <!--<div class="pagination" id="8" data-ng-click="PaginationFunction($event)">8</div>-->
+          <!--</div>-->
+
+    </div><!-- cars Block div enq -->
+  </div> <!-- container div row end -->
+</div>
